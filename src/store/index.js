@@ -1,3 +1,6 @@
+/**
+ * 状态管理模块
+ */
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -8,7 +11,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     list: [],
-    inputValue: 'aaa',
+    inputValue: '',
     nextId: 5,
     viewKey: 'all'
   },
@@ -19,8 +22,12 @@ export default new Vuex.Store({
     setInputVal(state, val) {
       state.inputValue = val
     },
-    // 添加列表项
+    /* 添加列表项 */
     addItem(state) {
+      /* 另：先把原先所有的id找出来，然后找到最大值，最大值+1 */
+      /* const ids = state.list.map(item => item.id)
+      const max = Math.max(...ids) */
+
       const obj = {
         id: state.nextId,
         info: state.inputValue,
@@ -54,6 +61,7 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    /* 统计未完成的个数 */
     unDoneLength(state) {
       return state.list.filter(item => item.done === false).length
     },

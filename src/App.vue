@@ -85,6 +85,7 @@ export default {
       // console.log(index)
       this.$store.commit('removeItem', index)
     },
+    /* 监听复选框的change事件 */
     cbStatusChanged(e, id) {
       // console.log(e.target.checked)
       const index = this.list.findIndex((item) => item.id === id)
